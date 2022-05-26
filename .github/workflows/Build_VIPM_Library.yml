@@ -6,6 +6,10 @@ name: Build_VIPM_Library
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
+    branches:
+      - main
+
+  pull_request:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -44,6 +48,7 @@ jobs:
         shell: powershell
 
       - name: Upload a Build Artifact
+        if: github.event_name == 'push'
         uses: actions/upload-artifact@v3.0.0
         with:
           # Artifact name
