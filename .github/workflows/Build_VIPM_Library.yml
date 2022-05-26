@@ -39,7 +39,7 @@ jobs:
 
       - id: vip-name
         run:
-          $vipName=Split-Path -Path ${{ ${{ steps.build-vip.outputs.Result }} }} -Leaf;
+          $vipName=Split-Path -Path ${{ steps.build-vip.outputs.Result }} -Leaf;
           Write-Host "::set-output name=vipName::"$vipName""
         shell: powershell
 
