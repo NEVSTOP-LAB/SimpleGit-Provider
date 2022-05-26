@@ -22,11 +22,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: vipm_InstallPackagesByName
-        uses: LV-APT/lvCICD@main
-        with:
-          Operation: vipm_InstallPackagesByName
-          Parameter1: 'Git API'
+      # - name: vipm_InstallPackagesByName
+      #   uses: LV-APT/lvCICD@main
+      #   with:
+      #     Operation: vipm_InstallPackagesByName
+      #     Parameter1: 'Git API'
 
       # Runs a set of commands using the runners shell
       - name: BuildDailyVIP
