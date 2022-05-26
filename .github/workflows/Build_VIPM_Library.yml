@@ -23,7 +23,6 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: vipm_InstallPackagesByName
-        id: build-vip
         uses: LV-APT/lvCICD@23-update-documentation
         with:
           Operation: vipm_InstallPackagesByName
