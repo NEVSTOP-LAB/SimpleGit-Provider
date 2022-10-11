@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="2018" Created_Date="2022-05-26 22:17:48" Modified_Date="2022-10-11 12:20:58" Creator="test" Comments="" ID="870323ba9977c674584b91e9b8b5e19b">
+<VI_Package_Builder_Settings Version="2018" Created_Date="2022-05-26 22:17:48" Modified_Date="2022-10-11 12:23:54" Creator="test" Comments="" ID="6377b1be451ef15a03d4c95a239e5008">
   <Library_General_Settings>
     <Package_File_Name>SimpleGit_Provider</Package_File_Name>
-    <Library_Version>2021.10.10.3</Library_Version>
+    <Library_Version>2022.10.11.4</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>.</Library_Source_Folder>
     <Library_Output_Folder>.vip</Library_Output_Folder>
