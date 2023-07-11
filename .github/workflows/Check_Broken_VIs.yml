@@ -12,18 +12,26 @@ jobs:
   # This workflow contains a single job called "build"
   Check_Broken_VIs:
     # The type of runner that the job will run on
-    runs-on: [self-hosted, lv2019]
+    runs-on: [self-hosted, lv2017]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+
+      - name: vipm-InstallPackage
+        uses: NEVSTOP-LAB/vipm-InstallPackage@main
+        with:
+          LabVIEW_Version: 2017
+          # Package could be PackageName/PacakgeWithVersion/vipFilePath
+          Package: "Git API"
+
       # Runs a set of commands using the runners shell
       - id: Check_Broken_VIs
         uses: LV-APT/lvCICD@main
         with:
-          LabVIEW_Version: 2019
+          LabVIEW_Version: 2017
           Operation: VIAn_CheckBrokenVIs
           Parameter1: ${{ github.workspace }}
           Parameter2: NOPASSWORD
