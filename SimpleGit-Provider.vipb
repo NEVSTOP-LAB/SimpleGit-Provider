@@ -1,10 +1,10 @@
-<VI_Package_Builder_Settings Version="2018" Created_Date="2022-05-26 22:17:48" Modified_Date="2023-07-11 13:40:13" Creator="test" Comments="" ID="fabe8e7d465daf02ffea8326b51b9242">
+<VI_Package_Builder_Settings Version="2018" Created_Date="2022-05-26 22:17:48" Modified_Date="2023-07-11 13:50:09" Creator="test" Comments="" ID="5cafcf55386674f6a1a67a50b45f1214">
   <Library_General_Settings>
     <Package_File_Name>SimpleGit_Provider</Package_File_Name>
     <Library_Version>2023.7.11.7</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>.</Library_Source_Folder>
-    <Library_Output_Folder>.vip</Library_Output_Folder>
+    <Library_Output_Folder>vip</Library_Output_Folder>
     <Company_Name>NEVSTOP</Company_Name>
     <Library_Summary/>
     <Library_License/>
