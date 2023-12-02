@@ -134,24 +134,7 @@
 				<Item Name="Get Text Rect.vi" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/Get Text Rect.vi"/>
 				<Item Name="GetHelpDir.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/GetHelpDir.vi"/>
 				<Item Name="GetRTHostConnectedProp.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/GetRTHostConnectedProp.vi"/>
-				<Item Name="GIT-Add.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/Basic/GIT-Add.vi"/>
 				<Item Name="GIT-API-for-LabVIEW.lvlib" Type="Library" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/GIT-API-for-LabVIEW.lvlib"/>
-				<Item Name="GIT-api.ctl" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/GIT-api.lvclass/GIT-api.ctl"/>
-				<Item Name="GIT-api.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/GIT-api.lvclass"/>
-				<Item Name="GIT-Branch.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/Basic/GIT-Branch.vi"/>
-				<Item Name="GIT-Commit Info.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/High Level/GIT-Commit Info.vi"/>
-				<Item Name="GIT-Commit.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/Basic/GIT-Commit.vi"/>
-				<Item Name="GIT-Create API.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/GIT-Create API.vi"/>
-				<Item Name="GIT-Current Branch.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/High Level/GIT-Current Branch.vi"/>
-				<Item Name="GIT-Current Commit.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/High Level/GIT-Current Commit.vi"/>
-				<Item Name="GIT-Execute Cmd.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/GIT-Execute Cmd.vi"/>
-				<Item Name="GIT-Pull.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/Basic/GIT-Pull.vi"/>
-				<Item Name="GIT-Push Current Branch With Tags.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/High Level/GIT-Push Current Branch With Tags.vi"/>
-				<Item Name="GIT-Repository Top Level.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/High Level/GIT-Repository Top Level.vi"/>
-				<Item Name="GIT-Set Working Dir.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/Accessors/GIT-Set Working Dir.vi"/>
-				<Item Name="GIT-Staged Files.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/High Level/GIT-Staged Files.vi"/>
-				<Item Name="GIT-Unstages Files.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/High Level/GIT-Unstages Files.vi"/>
-				<Item Name="GIT-Untracked Files.vi" Type="VI" URL="/&lt;vilib&gt;/Hampel Software Engineering/Git API/Source/Git API/API/High Level/GIT-Untracked Files.vi"/>
 				<Item Name="High Resolution Relative Seconds.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/High Resolution Relative Seconds.vi"/>
 				<Item Name="Longest Line Length in Pixels.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Longest Line Length in Pixels.vi"/>
 				<Item Name="LVBoundsTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVBoundsTypeDef.ctl"/>

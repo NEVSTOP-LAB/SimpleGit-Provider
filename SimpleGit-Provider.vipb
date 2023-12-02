@@ -1,4 +1,4 @@
-<VI_Package_Builder_Settings Version="2018" Created_Date="2022-05-26 22:17:48" Modified_Date="2023-07-11 13:50:09" Creator="test" Comments="" ID="5cafcf55386674f6a1a67a50b45f1214">
+<VI_Package_Builder_Settings Version="2018" Created_Date="2022-05-26 22:17:48" Modified_Date="2023-12-02 20:03:08" Creator="test" Comments="" ID="9d4771ad66faf60930b19a8571ba217a">
   <Library_General_Settings>
     <Package_File_Name>SimpleGit_Provider</Package_File_Name>
     <Library_Version>2023.7.11.7</Library_Version>
@@ -37,7 +37,7 @@
       <Copyright/>
       <Packager>NEVSTOP</Packager>
       <URL>https://github.com/NEVSTOP-LAB</URL>
-      <Release_Notes/>
+      <Release_Notes>[fix] #9 fix issue that Git Check whether Branch exists.vi: Should check for greater or equal 0. Thanks @pma-jup</Release_Notes>
     </Description>
     <Destinations>
       <Toolkit_VIs>
