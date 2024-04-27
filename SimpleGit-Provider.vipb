@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="2018" Created_Date="2022-05-26 22:17:48" Modified_Date="2023-12-02 20:03:08" Creator="test" Comments="" ID="9d4771ad66faf60930b19a8571ba217a">
+<VI_Package_Builder_Settings Version="2018" Created_Date="2022-05-26 22:17:48" Modified_Date="2024-04-27 11:37:50" Creator="test" Comments="" ID="6030af0fa374286d3b87ad3965004016">
   <Library_General_Settings>
     <Package_File_Name>SimpleGit_Provider</Package_File_Name>
-    <Library_Version>2023.7.11.7</Library_Version>
+    <Library_Version>2024.4.0.7</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>.</Library_Source_Folder>
     <Library_Output_Folder>vip</Library_Output_Folder>
@@ -37,7 +37,8 @@
       <Copyright/>
       <Packager>NEVSTOP</Packager>
       <URL>https://github.com/NEVSTOP-LAB</URL>
-      <Release_Notes>[fix] #9 fix issue that Git Check whether Branch exists.vi: Should check for greater or equal 0. Thanks @pma-jup</Release_Notes>
+      <Release_Notes>[fix] #12 fix issue that searching vi when opening menu 
+[fix] #9 fix issue that Git Check whether Branch exists.vi: Should check for greater or equal 0. Thanks @pma-jup</Release_Notes>
     </Description>
     <Destinations>
       <Toolkit_VIs>
