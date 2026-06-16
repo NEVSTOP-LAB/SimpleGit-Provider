@@ -28,12 +28,15 @@ if not defined VSCODE (
     exit /b 1
 )
 
-REM --- Launch VS Code asynchronously via PowerShell Start-Process ---
-REM  Avoiding cmd.exe 'start' which may inherit a bloated environment
-REM  block from the caller and fail with "insufficient memory".
+REM --- Launch VS Code asynchronously ---
+REM  Arguments are passed via environment variable to avoid
+REM  quoting conflicts when %* contains double-quoted paths.
+REM  Caller should quote paths with spaces, e.g.:
+REM    Open_dir_in_VSCode.cmd "D:\1 2 3"
 if "%~1"=="" (
     powershell -NoProfile -Command "Start-Process '%VSCODE%'"
 ) else (
-    powershell -NoProfile -Command "Start-Process '%VSCODE%' -ArgumentList '%*'"
+    set OPEN_ARGS=%*
+    powershell -NoProfile -Command "Start-Process '%VSCODE%' -ArgumentList ([Environment]::GetEnvironmentVariable('OPEN_ARGS','Process'))"
 )
 exit /b 0
