@@ -22,6 +22,9 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="_scripts" Type="Folder" URL="../SimpleGit/Git/_scripts">
+			<Property Name="NI.DISK" Type="Bool">true</Property>
+		</Item>
 		<Item Name="support" Type="Folder">
 			<Item Name="Close Caller FP if In LabVIEW folder.vi" Type="VI" URL="../SimpleGit/Git/_Support/Close Caller FP if In LabVIEW folder.vi"/>
 			<Item Name="DailyPatchBranchName.vi" Type="VI" URL="../SimpleGit/Git/_Support/DailyPatchBranchName.vi"/>
@@ -32,7 +35,6 @@
 			<Item Name="lvgit push.vi" Type="VI" URL="../SimpleGit/Git/_Support/lvgit push.vi"/>
 			<Item Name="lvgit status.vi" Type="VI" URL="../SimpleGit/Git/_Support/lvgit status.vi"/>
 			<Item Name="menu-operation.lvlib" Type="Library" URL="../SimpleGit/Git/_Support/menu-Operations/menu-operation.lvlib"/>
-			<Item Name="Run cmd File.vi" Type="VI" URL="../SimpleGit/Git/_Support/Run cmd File.vi"/>
 			<Item Name="SimpleGit Setting Dialog.vi" Type="VI" URL="../SimpleGit/Git/_Support/SimpleGit Setting Dialog.vi"/>
 			<Item Name="SimpleGit-Commit.vi" Type="VI" URL="../SimpleGit/Git/Command/SimpleGit-Commit.vi"/>
 			<Item Name="SimpleGit-LeaveDailyBranch.vi" Type="VI" URL="../SimpleGit/Git/Command/SimpleGit-LeaveDailyBranch.vi"/>
