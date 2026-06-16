@@ -20,7 +20,7 @@ jobs:
   Check_Broken_VIs:
     runs-on: [self-hosted, lv2017]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: vipm-InstallPackage
         uses: NEVSTOP-LAB/vipm-InstallPackage@main
@@ -29,6 +29,7 @@ jobs:
           Package: "Git API"
 
       - id: Check_Broken_VIs
+        continue-on-error: true
         uses: LV-APT/lvCICD@main
         with:
           LabVIEW_Version: 2017
@@ -36,6 +37,22 @@ jobs:
           Parameter1: ${{ github.workspace }}
           Parameter2: NOPASSWORD
           Parameter3: YES
+
+      - name: Upload VI Analyzer Result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: VIAn_CheckBrokenVIs_Result
+          path: ${{ steps.Check_Broken_VIs.outputs.Result }}
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Fail if broken VIs found
+        if: steps.Check_Broken_VIs.outcome == 'failure'
+        run: |
+          Write-Error "Broken VIs detected! Download the 'VIAn_CheckBrokenVIs_Result' artifact for details."
+          exit 1
+        shell: powershell
 
   # Step 2: Build VIPM library (only if broken VI check passes)
   Build_VIPM_Library:
@@ -45,7 +62,7 @@ jobs:
       # Get env variables
       - uses: FranzDiebold/github-env-vars-action@v2
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: vipm-InstallPackage
         uses: NEVSTOP-LAB/vipm-InstallPackage@main
