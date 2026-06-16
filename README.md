@@ -7,6 +7,5 @@ Simple git provider for LVAPT daily workflow. Windows of Tortoisegit will be use
 ## Dependence
 
 - Git API
-- OpenG Libraries
 - [Tortoisegit](https://tortoisegit.org/)
 - [Automating TortoiseGit](https://tortoisegit.org/docs/tortoisegit/tgit-automation.html#tgit-automation-basics)
