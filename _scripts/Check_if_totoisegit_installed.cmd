@@ -5,16 +5,16 @@ rem ============================================================================
 rem  Check_if_totoisegit_installed.cmd
 rem  ---------------------------------------------------------------------------
 rem  Detect whether Git and/or TortoiseGit are installed on this machine.
-rem  ���� Git / TortoiseGit �Ƿ��Ѱ�װ��
+rem  ???? Git / TortoiseGit ?????????
 rem
-rem  Usage / �÷�:
+rem  Usage / ?��?:
 rem    Check_if_totoisegit_installed.cmd               Check BOTH (Git + TortoiseGit)
 rem    Check_if_totoisegit_installed.cmd git           Check Git only
 rem    Check_if_totoisegit_installed.cmd tortoisegit   Check TortoiseGit only
 rem
-rem  Output (stdout) / ���:  TRUE   -> installed     �Ѱ�װ
-rem                          FALSE  -> not installed  δ��װ
-rem  Exit code / �˳���:      0 = TRUE (installed)    1 = FALSE (not installed)
+rem  Output (stdout) / ???:  TRUE   -> installed     ????
+rem                          FALSE  -> not installed  ��???
+rem  Exit code / ?????:      0 = TRUE (installed)    1 = FALSE (not installed)
 rem ============================================================================
 
 set "target=%~1"
