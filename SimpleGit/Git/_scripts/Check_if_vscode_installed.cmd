@@ -2,52 +2,44 @@
 REM ============================================================
 REM  Check_if_vscode_installed.cmd
 REM  Detects whether Visual Studio Code is installed locally.
-REM  Works on 32-bit and 64-bit Windows, and whether launched from a
-REM  32-bit or 64-bit host (e.g. LabVIEW). No admin rights required.
+REM  Works on 32-bit and 64-bit Windows, and whether launched
+REM  from a 32-bit or 64-bit host (e.g. LabVIEW).
+REM
+REM  Performance: uses a path cache (%TEMP%\sg-vscode.cache)
+REM  to avoid repeated disk scans. Zero external commands.
+REM
 REM  Output : prints TRUE  if VS Code is found
 REM           prints FALSE if VS Code is not found
 REM  Exit   : 0 = installed (TRUE), 1 = not installed (FALSE)
 REM ============================================================
-setlocal EnableDelayedExpansion
 
-set "FOUND=FALSE"
-
-REM --- 1) Is the "code" command available on PATH? ---
-where code >nul 2>&1
-if !errorlevel! equ 0 set "FOUND=TRUE"
-
-REM --- 2) Check the standard installation locations ---
-REM  %ProgramW6432% always resolves to the real 64-bit "Program Files",
-REM  even from a 32-bit process under WOW64 redirection.
-if "!FOUND!"=="FALSE" if exist "%LOCALAPPDATA%\Programs\Microsoft VS Code\Code.exe" set "FOUND=TRUE"
-if "!FOUND!"=="FALSE" if exist "%ProgramW6432%\Microsoft VS Code\Code.exe" set "FOUND=TRUE"
-if "!FOUND!"=="FALSE" if exist "%ProgramFiles%\Microsoft VS Code\Code.exe" set "FOUND=TRUE"
-if "!FOUND!"=="FALSE" if exist "%ProgramFiles(x86)%\Microsoft VS Code\Code.exe" set "FOUND=TRUE"
-
-REM --- 3) Check the registry uninstall entries (system + user) ---
-REM  Query both the 64-bit (/reg:64) and 32-bit (/reg:32) registry views so
-REM  a 64-bit system install is still seen when run from a 32-bit process.
-if "!FOUND!"=="FALSE" (
-    reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{EA457B21-F73E-494C-ACAB-524FDE069978}_is1" /reg:64 >nul 2>&1
-    if !errorlevel! equ 0 set "FOUND=TRUE"
-)
-if "!FOUND!"=="FALSE" (
-    reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{EA457B21-F73E-494C-ACAB-524FDE069978}_is1" /reg:32 >nul 2>&1
-    if !errorlevel! equ 0 set "FOUND=TRUE"
-)
-if "!FOUND!"=="FALSE" (
-    reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{771FD6B0-FA20-440A-A002-3B3BAC16DC50}_is1" /reg:64 >nul 2>&1
-    if !errorlevel! equ 0 set "FOUND=TRUE"
-)
-if "!FOUND!"=="FALSE" (
-    reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{771FD6B0-FA20-440A-A002-3B3BAC16DC50}_is1" /reg:32 >nul 2>&1
-    if !errorlevel! equ 0 set "FOUND=TRUE"
+REM --- Fast path: cached VS Code location (avoids repeated disk scans) ---
+if exist "%TEMP%\sg-vscode.cache" (
+    set /p VSCODE=<"%TEMP%\sg-vscode.cache"
+    if exist "%VSCODE%" (
+        echo TRUE
+        exit /b 0
+    )
 )
 
-echo !FOUND!
-
-if "!FOUND!"=="TRUE" (
-    endlocal & exit /b 0
-) else (
-    endlocal & exit /b 1
+REM --- Try standard install locations (pure 'if exist', no external commands) ---
+REM  1) User install (most common, 64-bit)
+if exist "%LOCALAPPDATA%\Programs\Microsoft VS Code\Code.exe" (
+    echo TRUE
+    exit /b 0
 )
+REM  2) System-wide install (64-bit, WOW64-safe via %ProgramW6432%)
+if exist "%ProgramW6432%\Microsoft VS Code\Code.exe" (
+    echo TRUE
+    exit /b 0
+)
+REM  3) System-wide install (64-bit, %ProgramFiles% differs from %ProgramW6432% only under 32-bit caller)
+if not "%ProgramFiles%"=="%ProgramW6432%" (
+    if exist "%ProgramFiles%\Microsoft VS Code\Code.exe" (
+        echo TRUE
+        exit /b 0
+    )
+)
+
+echo FALSE
+exit /b 1
