@@ -1,6 +1,7 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
 <Project Type="Project" LVVersion="17008000">
-	<Property Name="NI.LV.All.SourceOnly" Type="Bool">false</Property>
+	<Property Name="NI.LV.All.SaveVersion" Type="Str">17.0</Property>
+	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.Project.Description" Type="Str"></Property>
 	<Property Name="SMProvider.SMVersion" Type="Int">201310</Property>
 	<Item Name="My Computer" Type="{CEFE1B10-1732-4678-A70A-299293455410}">
@@ -21,6 +22,9 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="_scripts" Type="Folder" URL="../SimpleGit/Git/_scripts">
+			<Property Name="NI.DISK" Type="Bool">true</Property>
+		</Item>
 		<Item Name="support" Type="Folder">
 			<Item Name="Close Caller FP if In LabVIEW folder.vi" Type="VI" URL="../SimpleGit/Git/_Support/Close Caller FP if In LabVIEW folder.vi"/>
 			<Item Name="DailyPatchBranchName.vi" Type="VI" URL="../SimpleGit/Git/_Support/DailyPatchBranchName.vi"/>
@@ -30,6 +34,7 @@
 			<Item Name="lvgit pull.vi" Type="VI" URL="../SimpleGit/Git/_Support/lvgit pull.vi"/>
 			<Item Name="lvgit push.vi" Type="VI" URL="../SimpleGit/Git/_Support/lvgit push.vi"/>
 			<Item Name="lvgit status.vi" Type="VI" URL="../SimpleGit/Git/_Support/lvgit status.vi"/>
+			<Item Name="menu-operation.lvlib" Type="Library" URL="../SimpleGit/Git/_Support/menu-Operations/menu-operation.lvlib"/>
 			<Item Name="SimpleGit Setting Dialog.vi" Type="VI" URL="../SimpleGit/Git/_Support/SimpleGit Setting Dialog.vi"/>
 			<Item Name="SimpleGit-Commit.vi" Type="VI" URL="../SimpleGit/Git/Command/SimpleGit-Commit.vi"/>
 			<Item Name="SimpleGit-LeaveDailyBranch.vi" Type="VI" URL="../SimpleGit/Git/Command/SimpleGit-LeaveDailyBranch.vi"/>
@@ -55,15 +60,6 @@
 		<Item Name="SimpleGit_Global_Interface.vi" Type="VI" URL="../SimpleGit/SimpleGit_Global_Interface.vi"/>
 		<Item Name="SimpleGit_Item_Interface.vi" Type="VI" URL="../SimpleGit/SimpleGit_Item_Interface.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
-			<Item Name="user.lib" Type="Folder">
-				<Item Name="1D Array to String__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/1D Array to String__ogtk.vi"/>
-				<Item Name="Convert EOLs (String Array)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/Convert EOLs (String Array)__ogtk.vi"/>
-				<Item Name="Convert EOLs (String)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/Convert EOLs (String)__ogtk.vi"/>
-				<Item Name="Convert EOLs__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/Convert EOLs__ogtk.vi"/>
-				<Item Name="Current VIs Parents Ref__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/appcontrol/appcontrol.llb/Current VIs Parents Ref__ogtk.vi"/>
-				<Item Name="End of Line Constant (bug fix).vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/End of Line Constant (bug fix).vi"/>
-				<Item Name="String to 1D Array__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/String to 1D Array__ogtk.vi"/>
-			</Item>
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="BuildHelpPath.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/BuildHelpPath.vi"/>
 				<Item Name="Check if File or Folder Exists.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Check if File or Folder Exists.vi"/>
@@ -119,7 +115,6 @@
 			<Item Name="LV Config Write Pathlist.vi" Type="VI" URL="/&lt;resource&gt;/dialog/lvconfig.llb/LV Config Write Pathlist.vi"/>
 			<Item Name="LV Config Write String.vi" Type="VI" URL="/&lt;resource&gt;/dialog/lvconfig.llb/LV Config Write String.vi"/>
 			<Item Name="LV Config Write.vi" Type="VI" URL="/&lt;resource&gt;/dialog/lvconfig.llb/LV Config Write.vi"/>
-			<Item Name="menu-operation.lvlib" Type="Library" URL="../SimpleGit/Git/_Support/menu-Operations.llb/menu-operation.lvlib"/>
 			<Item Name="mxLvDebugDisplayCaller.vi" Type="VI" URL="/&lt;resource&gt;/Framework/Providers/API/mxLvDebugDisplayCaller.vi"/>
 			<Item Name="mxLvErrorHandler.vi" Type="VI" URL="/&lt;resource&gt;/Framework/Providers/API/mxLvErrorHandler.vi"/>
 			<Item Name="mxLvGetProjectRef.vi" Type="VI" URL="/&lt;resource&gt;/Framework/Providers/API/mxLvGetProjectRef.vi"/>

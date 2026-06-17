@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="2018" Created_Date="2022-05-26 22:17:48" Modified_Date="2024-04-27 11:37:50" Creator="test" Comments="" ID="6030af0fa374286d3b87ad3965004016">
+<VI_Package_Builder_Settings Version="2018" Created_Date="2022-05-26 22:17:48" Modified_Date="2026-06-17 10:12:31" Creator="test" Comments="" ID="8b5c7cd23b59ea72661137ea6e6c8a4e">
   <Library_General_Settings>
     <Package_File_Name>SimpleGit_Provider</Package_File_Name>
-    <Library_Version>2024.4.0.7</Library_Version>
+    <Library_Version>2026.6.0.7</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>.</Library_Source_Folder>
     <Library_Output_Folder>vip</Library_Output_Folder>
@@ -18,9 +18,6 @@
   <Advanced_Settings>
     <Package_Dependencies>
       <Additional_External_Dependencies>hse_lib_git_api &gt;=2.1.0.98</Additional_External_Dependencies>
-      <Additional_External_Dependencies>oglib_appcontrol &gt;=4.0.0.5</Additional_External_Dependencies>
-      <Additional_External_Dependencies>oglib_comparison &gt;=4.0.0.3</Additional_External_Dependencies>
-      <Additional_External_Dependencies>oglib_string &gt;=4.0.0.6</Additional_External_Dependencies>
     </Package_Dependencies>
     <Custom_Action_VIs>
       <Pre-Build_VI/>
@@ -194,6 +191,7 @@
       <close_labview_before_install>false</close_labview_before_install>
       <restart_labview_after_install>false</restart_labview_after_install>
       <skip_mass_compile_after_install>false</skip_mass_compile_after_install>
+      <install_into_global_environment>false</install_into_global_environment>
     </LabVIEW>
     <VI_Docs>
       <Edit_VI_Description>true</Edit_VI_Description>
