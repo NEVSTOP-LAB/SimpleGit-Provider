@@ -35,6 +35,7 @@
 			<Item Name="lvgit push.vi" Type="VI" URL="../SimpleGit/Git/_Support/lvgit push.vi"/>
 			<Item Name="lvgit status.vi" Type="VI" URL="../SimpleGit/Git/_Support/lvgit status.vi"/>
 			<Item Name="menu-operation.lvlib" Type="Library" URL="../SimpleGit/Git/_Support/menu-Operations/menu-operation.lvlib"/>
+			<Item Name="path to cmd argument.vi" Type="VI" URL="../SimpleGit/Git/_Support/path to cmd argument.vi"/>
 			<Item Name="SimpleGit Setting Dialog.vi" Type="VI" URL="../SimpleGit/Git/_Support/SimpleGit Setting Dialog.vi"/>
 			<Item Name="SimpleGit-Commit.vi" Type="VI" URL="../SimpleGit/Git/Command/SimpleGit-Commit.vi"/>
 			<Item Name="SimpleGit-LeaveDailyBranch.vi" Type="VI" URL="../SimpleGit/Git/Command/SimpleGit-LeaveDailyBranch.vi"/>
