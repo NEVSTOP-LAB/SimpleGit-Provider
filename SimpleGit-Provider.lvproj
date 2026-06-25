@@ -26,6 +26,8 @@
 			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
 		<Item Name="support" Type="Folder">
+			<Property Name="NI.SortType" Type="Int">3</Property>
+			<Item Name="menu-operation.lvlib" Type="Library" URL="../SimpleGit/Git/_Support/menu-Operations/menu-operation.lvlib"/>
 			<Item Name="Close Caller FP if In LabVIEW folder.vi" Type="VI" URL="../SimpleGit/Git/_Support/Close Caller FP if In LabVIEW folder.vi"/>
 			<Item Name="DailyPatchBranchName.vi" Type="VI" URL="../SimpleGit/Git/_Support/DailyPatchBranchName.vi"/>
 			<Item Name="Git Check whether Branch exists.vi" Type="VI" URL="../SimpleGit/Git/_Support/Git Check whether Branch exists.vi"/>
@@ -34,7 +36,6 @@
 			<Item Name="lvgit pull.vi" Type="VI" URL="../SimpleGit/Git/_Support/lvgit pull.vi"/>
 			<Item Name="lvgit push.vi" Type="VI" URL="../SimpleGit/Git/_Support/lvgit push.vi"/>
 			<Item Name="lvgit status.vi" Type="VI" URL="../SimpleGit/Git/_Support/lvgit status.vi"/>
-			<Item Name="menu-operation.lvlib" Type="Library" URL="../SimpleGit/Git/_Support/menu-Operations/menu-operation.lvlib"/>
 			<Item Name="path to cmd argument.vi" Type="VI" URL="../SimpleGit/Git/_Support/path to cmd argument.vi"/>
 			<Item Name="SimpleGit Setting Dialog.vi" Type="VI" URL="../SimpleGit/Git/_Support/SimpleGit Setting Dialog.vi"/>
 			<Item Name="SimpleGit-Commit.vi" Type="VI" URL="../SimpleGit/Git/Command/SimpleGit-Commit.vi"/>
