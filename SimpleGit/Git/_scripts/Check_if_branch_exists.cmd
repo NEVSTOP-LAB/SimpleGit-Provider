@@ -8,8 +8,9 @@ REM  constrained hosts (e.g. LabVIEW System Exec).
 REM
 REM  Usage:
 REM    Check_if_branch_exists.cmd <branch>              Check in current dir
-REM    Check_if_branch_exists.cmd <branch> "D:\repo"    Check in given repo
-REM    (quote the repo path if it contains spaces; branch
+REM    Check_if_branch_exists.cmd <branch> "D:\repo"    Check in given repo dir
+REM    Check_if_branch_exists.cmd <branch> "D:\repo\a.vi" Check by file directory
+REM    (quote the path if it contains spaces; branch
 REM     names may contain slashes, e.g. "daily/2026-06-22")
 REM
 REM  Output : prints TRUE  if the local branch exists
@@ -24,15 +25,23 @@ REM ============================================================
 REM --- Require a branch name (arg 1) ---
 if "%~1"=="" goto :false
 
-REM --- Optional repo path (arg 2): branch in current dir vs given repo ---
-if not "%~2"=="" goto :withpath
+REM --- Optional path (arg 2): current dir vs given dir/file ---
+if "%~2"=="" goto :currentdir
+if exist "%~2\*" goto :withdir
+goto :withfile
 
+:currentdir
 git show-ref --verify --quiet "refs/heads/%~1" 2>nul
 if errorlevel 1 goto :false
 goto :true
 
-:withpath
+:withdir
 git -C "%~2" show-ref --verify --quiet "refs/heads/%~1" 2>nul
+if errorlevel 1 goto :false
+goto :true
+
+:withfile
+git -C "%~dp2." show-ref --verify --quiet "refs/heads/%~1" 2>nul
 if errorlevel 1 goto :false
 
 :true

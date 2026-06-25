@@ -9,7 +9,8 @@ REM  constrained hosts (e.g. LabVIEW System Exec).
 REM
 REM  Usage:
 REM    Get_current_branch.cmd                 Use current directory
-REM    Get_current_branch.cmd "D:\repo path"  Use given repo path
+REM    Get_current_branch.cmd "D:\repo path"  Use given repo directory
+REM    Get_current_branch.cmd "D:\repo\a.vi"  Use directory of given file
 REM    (quote paths with spaces)
 REM
 REM  Output : the branch name on success (e.g. "main")
@@ -24,11 +25,18 @@ REM           nothing (instead of the literal "HEAD") when
 REM           the repository is in a detached-HEAD state.
 REM ============================================================
 
-if not "%~1"=="" goto :withpath
+if "%~1"=="" goto :currentdir
+if exist "%~1\*" goto :withdir
+goto :withfile
 
+:currentdir
 git branch --show-current 2>nul
 exit /b %errorlevel%
 
-:withpath
+:withdir
 git -C "%~1" branch --show-current 2>nul
+exit /b %errorlevel%
+
+:withfile
+git -C "%~dp1." branch --show-current 2>nul
 exit /b %errorlevel%
