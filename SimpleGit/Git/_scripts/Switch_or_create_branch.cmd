@@ -12,8 +12,9 @@ REM  (e.g. LabVIEW System Exec).
 REM
 REM  Usage:
 REM    Switch_or_create_branch.cmd <branch>              Switch in current dir
-REM    Switch_or_create_branch.cmd <branch> "D:\repo"    Switch in given repo
-REM    (quote the repo path if it contains spaces;
+REM    Switch_or_create_branch.cmd <branch> "D:\repo"    Switch in given repo dir
+REM    Switch_or_create_branch.cmd <branch> "D:\repo\a.vi" Switch by file directory
+REM    (quote the path if it contains spaces;
 REM     branch name must be a valid Git name: alphanumeric,
 REM     hyphens, underscores, slashes; avoid special chars)
 REM
@@ -31,9 +32,12 @@ REM ============================================================
 REM --- Require branch name (arg 1) ---
 if "%~1"=="" goto :error
 
-REM --- Optional repo path (arg 2) ---
-if not "%~2"=="" goto :withpath
+REM --- Optional path (arg 2): current dir vs given dir/file ---
+if "%~2"=="" goto :currentdir
+if exist "%~2\*" goto :withdir
+goto :withfile
 
+:currentdir
 REM --- Current directory ---
 git checkout "%~1" 2>nul
 if errorlevel 1 goto :tryremote_currentdir
@@ -48,8 +52,8 @@ exit /b 0
 git checkout -b "%~1"
 exit /b %errorlevel%
 
-:withpath
-REM --- Explicit repo path (arg 2) ---
+:withdir
+REM --- Explicit repo directory (arg 2) ---
 git -C "%~2" checkout "%~1" 2>nul
 if errorlevel 1 goto :tryremote_withpath
 exit /b 0
@@ -61,6 +65,21 @@ exit /b 0
 
 :createnew_withpath
 git -C "%~2" checkout -b "%~1"
+exit /b %errorlevel%
+
+:withfile
+REM --- Explicit file path (arg 2): use its directory ---
+git -C "%~dp2." checkout "%~1" 2>nul
+if errorlevel 1 goto :tryremote_withfile
+exit /b 0
+
+:tryremote_withfile
+git -C "%~dp2." checkout -b "%~1" "origin/%~1" 2>nul
+if errorlevel 1 goto :createnew_withfile
+exit /b 0
+
+:createnew_withfile
+git -C "%~dp2." checkout -b "%~1"
 exit /b %errorlevel%
 
 :error

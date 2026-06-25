@@ -9,7 +9,8 @@ REM  constrained hosts (e.g. LabVIEW System Exec).
 REM
 REM  Usage:
 REM    Get_last_commit_message.cmd                 Use current directory
-REM    Get_last_commit_message.cmd "D:\repo path"  Use given repo path
+REM    Get_last_commit_message.cmd "D:\repo path"  Use given repo directory
+REM    Get_last_commit_message.cmd "D:\repo\a.vi"  Use directory of given file
 REM    (quote paths with spaces)
 REM
 REM  Output : the last commit subject line on success
@@ -22,11 +23,18 @@ REM           placeholder '%s' through cmd. Use '%%B' for the
 REM           full message body instead of just the subject.
 REM ============================================================
 
-if not "%~1"=="" goto :withpath
+if "%~1"=="" goto :currentdir
+if exist "%~1\*" goto :withdir
+goto :withfile
 
+:currentdir
 git log -1 --format=%%s 2>nul
 exit /b %errorlevel%
 
-:withpath
+:withdir
 git -C "%~1" log -1 --format=%%s 2>nul
+exit /b %errorlevel%
+
+:withfile
+git -C "%~dp1." log -1 --format=%%s 2>nul
 exit /b %errorlevel%
