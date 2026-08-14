@@ -16,8 +16,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Step 1: Check for broken VIs
-  Check_Broken_VIs:
+  # Check for broken VIs and build the VIPM library on the same runner.
+  Check_Broken_VIs_And_Build_VIPM_Library:
     runs-on: [self-hosted, lv2017]
     steps:
       - uses: actions/checkout@v4
@@ -54,21 +54,8 @@ jobs:
           exit 1
         shell: powershell
 
-  # Step 2: Build VIPM library (only if broken VI check passes)
-  Build_VIPM_Library:
-    needs: Check_Broken_VIs
-    runs-on: [self-hosted, lv2017]
-    steps:
-      # Get env variables
+      # Get env variables required for the FTP backup path.
       - uses: FranzDiebold/github-env-vars-action@v2
-
-      - uses: actions/checkout@v4
-
-      - name: vipm-InstallPackage
-        uses: NEVSTOP-LAB/vipm-InstallPackage@main
-        with:
-          LabVIEW_Version: 2017
-          Package: "Git API"
 
       - name: BuildDailyVIP
         id: build-vip
