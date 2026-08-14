@@ -1,0 +1,106 @@
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on pull request merged to main
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+  push:
+    paths-ignore:
+      - '**.md'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # Step 1: Check for broken VIs
+  Check_Broken_VIs:
+    runs-on: [self-hosted, lv2017]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: vipm-InstallPackage
+        uses: NEVSTOP-LAB/vipm-InstallPackage@main
+        with:
+          LabVIEW_Version: 2017
+          Package: "Git API"
+
+      - id: Check_Broken_VIs
+        continue-on-error: true
+        uses: LV-APT/lvCICD@main
+        with:
+          LabVIEW_Version: 2017
+          Operation: VIAn_CheckBrokenVIs
+          Parameter1: ${{ github.workspace }}
+          Parameter2: NOPASSWORD
+          Parameter3: YES
+
+      - name: Upload VI Analyzer Result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: VIAn_CheckBrokenVIs_Result
+          path: ${{ steps.Check_Broken_VIs.outputs.Result }}
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Fail if broken VIs found
+        if: steps.Check_Broken_VIs.outcome == 'failure'
+        run: |
+          Write-Error "Broken VIs detected! Download the 'VIAn_CheckBrokenVIs_Result' artifact for details."
+          exit 1
+        shell: powershell
+
+  # Step 2: Build VIPM library (only if broken VI check passes)
+  Build_VIPM_Library:
+    needs: Check_Broken_VIs
+    runs-on: [self-hosted, lv2017]
+    steps:
+      # Get env variables
+      - uses: FranzDiebold/github-env-vars-action@v2
+
+      - uses: actions/checkout@v4
+
+      - name: vipm-InstallPackage
+        uses: NEVSTOP-LAB/vipm-InstallPackage@main
+        with:
+          LabVIEW_Version: 2017
+          Package: "Git API"
+
+      - name: BuildDailyVIP
+        id: build-vip
+        uses: LV-APT/lvCICD@main
+        with:
+          LabVIEW_Version: 2017
+          Operation: vipm_BuildDailyVIP
+          Parameter1: ${{ github.workspace }}
+          Parameter2: NO
+
+      - id: vip-name
+        run: |
+          $vipName=Split-Path -Path ${{ steps.build-vip.outputs.Result }} -Leaf
+          "vipName=$vipName" >> $env:GITHUB_OUTPUT
+        shell: powershell
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.vip-name.outputs.vipName }}
+          path: ${{ steps.build-vip.outputs.Result }}
+          if-no-files-found: warn
+          retention-days: 90
+
+      # Backup generated files by ftp
+      - name: backup Build Artifact by ftp
+        uses: dennisameling/ftp-upload-action@v1.0.9
+        with:
+          server: ${{ secrets.VIPM_FTP_IP }}
+          port: ${{ secrets.VIPM_FTP_PORT }}
+          username: ${{ secrets.VIPM_FTP_USER }}
+          password: ${{ secrets.VIPM_FTP_PASSWORD }}
+          secure: false
+          server_dir: /${{ env.CI_REPOSITORY_OWNER_SLUG }}/${{ env.CI_REPOSITORY_NAME }}/${{ env.CI_ACTION_REF_NAME }}/
+          local_dir: ./vip/
