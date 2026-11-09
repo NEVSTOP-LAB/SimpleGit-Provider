@@ -2,12 +2,11 @@ name: CI
 
 # Controls when the workflow will run
 on:
+  # 触发方式：push（任意分支）+ 手动 workflow_dispatch。
+  # 不使用 pull_request(closed)：合并到 main 本身会产生 push，保留该触发会让每次合并
+  # 双跑一份构建，PR 关闭但未合并时也会白跑一次；且 closed 运行的 CI_ACTION_REF_NAME
+  # 是 PR 头分支名，FTP 产物会归档到分支目录而不是 main。
   # Triggers the workflow on pull request merged to main
-  pull_request:
-    branches:
-      - main
-    types: [closed]
-
   push:
     paths-ignore:
       - '**.md'
